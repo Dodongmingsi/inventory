@@ -1,6 +1,5 @@
 <template>
   <div>
-    <navbar :msg="count"></navbar>
   </div>
   <div>
     <!-- Header Section -->
