@@ -1,8 +1,6 @@
 <template>
   <div>
-<navbar/>
 <hero/>
-<foot/>
   </div>
 </template>
 

@@ -1,5 +1,8 @@
 <template>
   <div>
+    <navbar :msg="count"></navbar>
+  </div>
+  <div>
     <!-- Header Section -->
     <div class="relative">
       <div class="font-extrabold absolute top-80 left-56 text-white text-6xl">Shop now!</div>
@@ -17,10 +20,11 @@
             <div class="text-center">{{ prod.ProductName }}</div>
             <div class="text-gray-500">{{ prod.Description }}</div>
             <div class="text-red-500 font-bold">${{ prod.Price }}</div>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-md">Add to Cart</button>
-          </div>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-md"><NuxtLink :to="`/products/${prod.ProductID}`">Buy now</NuxtLink></button>
+            </div>
         </div>
       </div>
+     
       
       <!-- Featured Items Section -->
       <div class="featured flex flex-col items-center justify-center gap-10">
@@ -31,13 +35,16 @@
     
     <!-- Products Section -->
     <div class="text-3xl font-bold py-10 text-center">Products</div>
-    <div class="flex flex-wrap justify-center gap-10">
+    <div class="flex flex-wrap justify-center gap-10 mb-10">
       <div v-for="prod in products" :key="prod.id" class="product-card flex flex-col items-center justify-center w-72 bg-gray-100 p-4 rounded-lg">
-        <img :src="prod.url" class="h-48 w-48 object-cover rounded-md mb-4" alt="Product Image">
+        <img :src="prod.url" class="h-48 w-48 object-cover rounded-md mt-4 mb-4" alt="Product Image">
         <div class="text-xl">{{ prod.ProductName }}</div>
         <div class="text-gray-500">{{ prod.Description }}</div>
         <div class="text-red-500 font-bold">${{ prod.Price }}</div>
-        <button class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4">Add to Cart</button>
+       
+          <button class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"><NuxtLink :to="`/products/${prod.ProductID}`">Buy now</NuxtLink></button>
+          <button class="bg-amber-500 text-white px-4 py-2 rounded-md mt-4" @click="count++">Add to cart</button>
+     
       </div>
     </div>
     
@@ -51,6 +58,9 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { createClient } from '@supabase/supabase-js';
+import navbar from './navbar.vue'
+
+const count = ref(0)
 
 const supabase = createClient('https://ezjpjdoqzdjqcpgyltbo.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6anBqZG9xemRqcWNwZ3lsdGJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTI5MjQyNDYsImV4cCI6MjAyODUwMDI0Nn0.uvgCZLt0Ok_XUVI7od0M17kcpP2DZQ5H08THYUk0Jc4');
 
