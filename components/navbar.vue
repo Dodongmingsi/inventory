@@ -2,7 +2,7 @@
   <div class="bg-blue-50 flex justify-between p-10 text-xl">
 
     <div>
-      <div class="pt-2" >Logo</div>
+      <div class="pt-2" ><img src="/images/logo.png"></div>
     </div>
 
     <div class="flex gap-8">
