@@ -1,15 +1,28 @@
 <template>
+
   <div>
-  </div>
-  <div>
-    <!-- Header Section -->
-    <div class="relative">
-      <div class="font-extrabold absolute top-80 left-56 text-white text-6xl">Shop now!</div>
-      <img src="/images/coke.jpg" class="screen w-screen" alt="Header Image">
+ <!--Slider section-->
+    <div class="relative w-full h-screen overflow-hidden">
+        <div class="w-full h-full">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image: url('fandb.jpg')">Slide 1</div>
+                <div class="swiper-slide" style="background-image: url('hande.jpg')">Slide 2</div>
+                <div class="swiper-slide" style="background-image: url('handp.jpg')">Slide 3</div>
+                <div class="swiper-slide" style="background-image: url('handw.jpg')">Slide 4</div>
+                <div class="swiper-slide" style="background-image: url('bandg.jpg')">Slide 5</div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
     </div>
-    
+
+
     <!-- Main Content Section -->
     <div class="flex justify-between bg-orange-200 py-10">
+
       <!-- Best Sellers Section -->
       <div class="best-sellers flex flex-col items-center justify-center gap-10">
         <div class="text-2xl">Best Sellers</div>
@@ -77,10 +90,37 @@ async function fetchData() {
 
 onMounted(() => {
   fetchData();
-});
+})
+       
+        var swiper = new swiper('.Swiper-container', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 3000,
+            },
+            effect: 'fade',
+        });
+
 </script>
 
+
 <style>
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+}
 .screen {
   height: 600px;
 }

@@ -1,13 +1,10 @@
 <template>
   <div>
-<hero/>
+    <menu />
+    <hero />
   </div>
 </template>
 
 <script setup>
-
+import SwiperSlider from '~/components/SwiperSlider.vue';
 </script>
-
-<style lang="scss" scoped>
-
-</style>
