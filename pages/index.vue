@@ -1,8 +1,8 @@
 <template>
   <div>
-    <navbar />
-    <hero />
-    
+    <swiper/>
+    <hero/>
+
   </div>
 </template>
 

@@ -54,15 +54,19 @@
 </body>
 </template>
 
-<script type="text/javascript">
-var counter = 1;
-setInterval(function() {
-  document.getElementById('radio' + counter).checked = true;
-  counter++;
-  if(counter > 5){
-    counter = 1;
-  }
-}, 5000);
+<script>
+export default {
+  mounted() {
+    let counter = 1;
+    setInterval(() => {
+      document.getElementById('radio' + counter).checked = true;
+      counter++;
+      if (counter > 5) {
+        counter = 1;
+      }
+    }, 5000);
+  },
+};
 </script>
 
 <style scoped>
@@ -77,15 +81,15 @@ body{
 }
 
 .slider{
-  width: 800px;
-  height: 500px;
+  width: full;
+  height: full;
   border-radius: 10px;
   overflow: hidden;
 }
 
 .slides{
-  width: 500%;
-  height: 500px;
+  width: full;
+  height: full;
   display: flex;
 }
 
@@ -94,19 +98,19 @@ body{
 }
 
 .slide{
-  width: 20px;
+  width: full;
   transition: 2s;
 }
 
 .slide img{
-  width: 800px;
-  height: 500px;
+  width: full;
+  height: full;
 }
 
 /* css for manual slide nav*/
 .nav-manual{
 position: absolute;
-width: 800px;
+width: full;
 margin-top: -40px;
 display: flex;
 justify-content: center;
@@ -152,7 +156,7 @@ justify-content: center;
 .nav-auto{
   position: absolute;
   display: flex;
-  width: 800px;
+  width: full;
   justify-content: center;
   margin-top: 460px;
 }
