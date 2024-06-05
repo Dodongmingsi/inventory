@@ -1,25 +1,6 @@
 <template>
-
   <div>
- <!--Slider section-->
-    <div class="relative w-full h-screen overflow-hidden">
-        <div class="w-full h-full">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image: url('fandb.jpg')">Slide 1</div>
-                <div class="swiper-slide" style="background-image: url('hande.jpg')">Slide 2</div>
-                <div class="swiper-slide" style="background-image: url('handp.jpg')">Slide 3</div>
-                <div class="swiper-slide" style="background-image: url('handw.jpg')">Slide 4</div>
-                <div class="swiper-slide" style="background-image: url('bandg.jpg')">Slide 5</div>
-            </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
-            <!-- Add Navigation -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </div>
-
-
+    
     <!-- Main Content Section -->
     <div class="flex justify-between bg-orange-200 py-10">
 
@@ -71,6 +52,9 @@
 import { ref, onMounted } from 'vue';
 import { createClient } from '@supabase/supabase-js';
 import navbar from './navbar.vue'
+import menu from './swiper.vue'
+import categories from './categories.vue';
+
 
 const count = ref(0)
 
@@ -92,35 +76,13 @@ onMounted(() => {
   fetchData();
 })
        
-        var swiper = new swiper('.Swiper-container', {
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            autoplay: {
-                delay: 3000,
-            },
-            effect: 'fade',
-        });
+       
 
 </script>
 
 
 <style>
-.swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    color: #fff;
-    background-size: cover;
-    background-position: center;
-}
+
 .screen {
   height: 600px;
 }
