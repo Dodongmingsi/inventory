@@ -22,7 +22,7 @@
             <button class="bg-blue-500 text-white px-4 py-2 rounded-md"><NuxtLink :to="`/products/${prod.ProductID}`">Buy now</NuxtLink></button>
             </div>
         </div>
-      </div>
+    </div>
      
       
       <!-- Featured Items Section -->
@@ -42,8 +42,8 @@
         <div class="text-red-500 font-bold">${{ prod.Price }}</div>
        
           <button class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"><NuxtLink :to="`/products/${prod.ProductID}`">Buy now</NuxtLink></button>
-          <button class="bg-amber-500 text-white px-4 py-2 rounded-md mt-4" @click="count++">Add to cart</button>
-     
+          <button class="bg-amber-500 text-white px-4 py-2 rounded-md mt-4" @click="addItemToCart(prod)">Add to cart</button>
+          
       </div>
     </div>
     
@@ -57,20 +57,67 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { createClient } from '@supabase/supabase-js';
-import navbar from './navbar.vue'
+import { defineProps, defineEmits } from 'vue';
 
-const count = ref(0)
+defineProps({
+  cartItems: Array,
+  addToCart: Function,
+});
+const emits = defineEmits(['add-to-cart']);
+
 
 const supabase = createClient('https://ezjpjdoqzdjqcpgyltbo.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6anBqZG9xemRqcWNwZ3lsdGJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTI5MjQyNDYsImV4cCI6MjAyODUwMDI0Nn0.uvgCZLt0Ok_XUVI7od0M17kcpP2DZQ5H08THYUk0Jc4');
 
 const bestSellers = ref([]);
 const products = ref([]);
 
+async function addItemToCart(prod) {
+  // Check if the product already exists in the cart
+  const { data: existingProduct } = await supabase
+    .from('cart')
+    .select('quantity')
+    .eq('ProductName', prod.ProductName)
+    .single();
+
+  if (existingProduct) {
+    // If the product exists, update the quantity
+    const newQuantity = existingProduct.quantity + 1;
+    let newTotal = newQuantity * prod.Price;
+    const { error } = await supabase
+      .from('cart')
+      .update({ quantity: newQuantity,total:newTotal })
+      .eq('ProductID', prod.ProductID);
+      
+    if (error) {
+      console.error("Error updating product quantity", error.message);
+      return;
+    }
+  } else {
+    // If the product doesn't exist, insert a new record
+    const { error } = await supabase.from('cart').insert([
+      {
+        ProductID:prod.ProductID,
+        ProductName: prod.ProductName,
+        price: prod.Price,
+        quantity: 1, // Initial quantity for a new product
+        total:prod.Price
+      }
+    ]);
+
+    if (error) {
+      console.error("Error inserting a new product", error.message);
+      return;
+    }
+  }
+}
+
+
+
 async function fetchData() {
   console.log('Fetching data...');
   const { data: bestSellersData } = await supabase.from('products').select().limit(6); // Limit to 6 best sellers
   bestSellers.value = bestSellersData;
-  
+ 
   const { data: productsData } = await supabase.from('products').select();
   products.value = productsData;
 }

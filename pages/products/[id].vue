@@ -1,4 +1,5 @@
 <template>
+  <navbar></navbar>
   <div class="ml-32 mt-10">
     
     <p v-for="prod in products">
