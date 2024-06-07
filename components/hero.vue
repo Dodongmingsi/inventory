@@ -4,33 +4,52 @@
   <div>
     <!-- Header Section -->
     <div class="relative">
-      <div class="font-extrabold absolute top-80 left-56 text-white text-6xl">Shop now!</div>
-      <img src="/images/coke.jpg" class="screen w-screen" alt="Header Image">
+       <slider></slider>
     </div>
-    
     <!-- Main Content Section -->
-    <div class="flex justify-between bg-orange-200 py-10">
-      <!-- Best Sellers Section -->
-      <div class="best-sellers flex flex-col items-center justify-center gap-10">
-        <div class="text-2xl">Best Sellers</div>
-        <div class="grid grid-cols-2 gap-4">
-          <div v-for="prod in bestSellers" :key="prod.id" class="product">
-            <img :src="prod.url" class="h-48 w-48 object-cover rounded-md" alt="Product Image">
-            <div class="text-center">{{ prod.ProductName }}</div>
-            <div class="text-gray-500">{{ prod.Description }}</div>
-            <div class="text-red-500 font-bold">${{ prod.Price }}</div>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-md"><NuxtLink :to="`/products/${prod.ProductID}`">Buy now</NuxtLink></button>
-            </div>
-        </div>
-    </div>
-     
-      
-      <!-- Featured Items Section -->
-      <div class="featured flex flex-col items-center justify-center gap-10">
-        <div class="text-2xl">Featured Items</div>
-        <div class="border-2 border-red-500 w-48 h-48"></div>
+
+<div class="flex justify-between bg-blue-100 py-10">
+  <!-- Best Sellers Section -->
+
+
+  <div class="mt-20 ml-5 best-sellers flex flex-col items-center justify-center gap-10">
+    <div class="text-4xl font-bold font-sans">Best Sellers</div>
+    <div class="grid grid-cols-2 gap-8">
+      <div v-for="prod in bestSellers" :key="prod.id" class="product bg-white p-4 rounded-lg shadow-md">
+        <img :src="prod.url" class="h-48 w-full object-cover rounded-md mb-4" alt="Product Image">
+        <div class="text-lg font-semibold">{{ prod.ProductName }}</div>
+        <div class="text-gray-500 mb-2">{{ prod.Description }}</div>
+        <div class="text-red-500 font-bold">${{ prod.Price }}</div>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"><NuxtLink :to="`/products/${prod.ProductID}`">Buy now</NuxtLink></button>
       </div>
     </div>
+  </div>
+
+  <!-- Featured Items Section -->
+  <div>
+  <div class="text-4xl font-semibold text-center mt-20">Featured Items</div>
+  <div class="feature ml-40 mr-20 mt-5 font-bold grid grid-cols-1 gap-5" >
+      <features></features>
+  </div>
+  <div class="feature ml-40 mr-20 font-bold grid grid-cols-2 gap-5" >
+      <feature1></feature1>
+      <feature4></feature4>
+      <feature2></feature2>
+      <feature3></feature3>
+  </div>
+  </div>
+
+  
+</div>
+
+<!--Categories-->
+<div class="flex justify-between ml-20 mr-20 items-center p-5 text-xl font-semibold gap-10">
+        <div class="categories">Food and Beverages</div>
+        <div class="categories ">Household Essentials</div>
+        <div class="categories ">Personal Care</div>
+        <div class="categories ">Health and Wellness</div>
+        <div class="categories ">Beauty and Grooming</div>
+</div>
     
     <!-- Products Section -->
     <div class="text-3xl font-bold py-10 text-center">Products</div>
@@ -138,5 +157,24 @@ onMounted(() => {
 
 .product-card {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.categories:hover{
+  color: rgb(0, 187, 255);
+  cursor: pointer;
+
+}
+.categories{
+  color:white;
+  width:fit-content;
+  text-align: center;
+  padding: 15px;
+  max-height: 60px;
+  border-radius: 5px;
+  background-color: rgb(47, 85, 117);
+}
+
+.features{
+  margin-right: 50px;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <Navbarlogin/>
+  
   <div class="flex justify-center">
       <div class="absolute top-1/4 text-semibold text-5xl">
         Welcome To StockPilot
@@ -13,8 +14,8 @@
           <div class="form-group">
             <input type="password" class="form-control" placeholder="Password">
           </div>
-          <NuxtLink to="/home"><button class="btn">Login</button></NuxtLink>
-          <p class="mt-10 text-xl"> No account? <span class="text-blue-500"><NuxtLink to="/signup">Sign up</NuxtLink></span></p>
+          <NuxtLink to="/home"><button class="btn">Register</button></NuxtLink>
+          <p class="mt-10 text-xl"> Already have an account? <span class="text-blue-500"><NuxtLink to="/">Log in</NuxtLink></span></p>
         </form>
       
       </div>
