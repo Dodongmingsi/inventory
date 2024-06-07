@@ -13,9 +13,9 @@
           <div class="form-group">
             <input type="password" class="form-control" placeholder="Password">
           </div>
-          <NuxtLink to="/home"><button class="btn">Login</button></NuxtLink>
+          <NuxtLink to="/admin"><button class="btn">Login</button></NuxtLink>
           <p class="mt-10 text-xl"> No account? <span class="text-blue-500"><NuxtLink to="/signup">Sign up</NuxtLink></span></p>
-          <p class="text-black font-serif italic pt-5 text-blue-400"><NuxtLink to="/adminlogin">Are you an administrator?</NuxtLink></p>
+          <p class="font-serif italic pt-5 text-blue-400"><NuxtLink to="/">User Log in</NuxtLink></p>
         </form>
       
       </div>
