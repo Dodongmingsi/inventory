@@ -2,7 +2,7 @@
   <Navbarlogin/>
   
   <div class="flex justify-center">
-      <div class="absolute top-1/4 text-semibold text-5xl">
+      <div class="absolute top-1/2 text-semibold text-5xl mb-5">
         Welcome To StockPilot
       </div>
 

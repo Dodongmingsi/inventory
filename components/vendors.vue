@@ -1,6 +1,6 @@
 <template>
   <div class="vendors-container m-10">
-    <h2 class="vendor-header font-serif font-bold">Vendors</h2>
+    <h2 class="items-center vendor-header font-serif font-bold">Vendors</h2>
     <div v-if="vendors.length > 0" class="vendor-list">
       <div v-for="vendor in vendors" :key="vendor.VendorID" class="vendor-item">
         <span class="vendor-id">ID: {{ vendor.VendorID }}</span>
