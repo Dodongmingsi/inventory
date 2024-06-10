@@ -33,7 +33,7 @@
       <!-- Team Section -->
        <div class="flex-wrap justify-center content-center">
       <h2>Our Team</h2>
-        <div class="team">
+        <div class="team flex gap-5 items-center">
           <div class="team-member">
             <img src="public/images/ice.jpg" alt="jhune" />
             <h3>Jhune Eleazar Camatura</h3>

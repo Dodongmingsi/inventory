@@ -1,30 +1,61 @@
 <template>
   <Navbarlogin/>
-  
+
   <div class="flex justify-center">
-      <div class="absolute top-1/4 text-semibold text-5xl">
-        Welcome To StockPilot
-      </div>
+    <div class="absolute top-1/4 text-semibold text-5xl">
+      Welcome To StockPilot
+    </div>
 
-      <div class="login-container">
-        <form class="login-form">
-          <div class="form-group">
-            <input type="email" class="form-control" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password">
-          </div>
-          <NuxtLink to="/home"><button class="btn">Register</button></NuxtLink>
-          <p class="mt-10 text-xl"> Already have an account? <span class="text-blue-500"><NuxtLink to="/">Log in</NuxtLink></span></p>
-        </form>
-      
-      </div>
-
+    <div class="login-container">
+      <form class="login-form" @submit.prevent="signUp">
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Email" v-model="email">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" v-model="password">
+        </div>
+        <button class="btn" type="submit">Register</button>
+        <p class="mt-10 text-xl">Already have an account? 
+          <span class="text-blue-500">
+            <NuxtLink to="/">Log in</NuxtLink>
+          </span>
+        </p>
+        <div v-if="errorMsg" class="error">{{ errorMsg }}</div>
+        <div v-if="successMsg" class="success">{{ successMsg }}</div>
+      </form>
+    </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 
+const client = useSupabaseClient();
+const email = ref('');
+const password = ref('');
+const errorMsg = ref(null);
+const successMsg = ref(null);
+
+async function signUp() {
+  if (!email.value || !password.value) {
+    errorMsg.value = 'Please fill out all fields.';
+    successMsg.value = null;
+    return;
+  }
+
+  try {
+    const { data, error } = await client.auth.signUp({
+      email: email.value,
+      password: password.value,
+    });
+    if (error) throw error;
+    successMsg.value = "Check your email to confirm your account.";
+    errorMsg.value = null;
+  } catch (error) {
+    errorMsg.value = error.message;
+    successMsg.value = null;
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -70,5 +101,15 @@
 
 .btn:hover {
   background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
 }
 </style>

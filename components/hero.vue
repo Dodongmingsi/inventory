@@ -117,6 +117,7 @@ async function addItemToCart(prod) {
       {
         ProductID:prod.ProductID,
         ProductName: prod.ProductName,
+        CustomerID:1,
         price: prod.Price,
         quantity: 1, // Initial quantity for a new product
         total:prod.Price
@@ -134,7 +135,7 @@ async function addItemToCart(prod) {
 
 async function fetchData() {
   console.log('Fetching data...');
-  const { data: bestSellersData } = await supabase.from('products').select().limit(6); // Limit to 6 best sellers
+  const { data: bestSellersData } = await supabase.from('stock').select().limit(6); // Limit to 6 best sellers
   bestSellers.value = bestSellersData;
  
   const { data: productsData } = await supabase.from('products').select();
