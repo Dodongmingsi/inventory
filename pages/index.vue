@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <Navbarlogin/>
   <div class="flex justify-center">
       <div class="absolute top-1/4 text-semibold text-5xl">
@@ -19,6 +20,11 @@
         </form>
       
       </div>
+=======
+  <div>
+    <swiper/>
+    <hero/>
+>>>>>>> f8bbf08da4efa46399a7fc29b0c32526c2a246e3
 
   </div>
 </template>
@@ -26,6 +32,7 @@
 <script setup>
 
 </script>
+<<<<<<< HEAD
 
 <style lang="scss" scoped>
 .login-container {
@@ -72,3 +79,5 @@
   background-color: #0056b3;
 }
 </style>
+=======
+>>>>>>> f8bbf08da4efa46399a7fc29b0c32526c2a246e3

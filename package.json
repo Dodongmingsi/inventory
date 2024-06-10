@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
@@ -18,14 +19,22 @@
     "@supabase/supabase-js": "^2.42.5",
     "bootstrap": "^5.3.3",
     "chart.js": "^3.0.0",
+=======
+    "@supabase/supabase-js": "^2.43.4",
+>>>>>>> f8bbf08da4efa46399a7fc29b0c32526c2a246e3
     "nuxt": "^3.11.2",
+    "swiper": "^11.1.4",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@nuxtjs/supabase": "^1.2.2",
     "@nuxtjs/tailwindcss": "^6.11.4",
+    "@types/node": "^20.14.1",
+    "@types/webpack": "^5.28.5",
+    "@vue/cli-plugin-typescript": "^5.0.8",
     "sass": "^1.75.0",
-    "tailwindcss": "^3.4.3"
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5"
   }
 }

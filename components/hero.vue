@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< HEAD
   </div>
   <div>
     <!-- Header Section -->
@@ -21,6 +22,31 @@
         <div class="text-gray-500 mb-2">{{ prod.Description }}</div>
         <div class="text-red-500 font-bold">${{ prod.Price }}</div>
         <button class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"><NuxtLink :to="`/products/${prod.ProductID}`">Buy now</NuxtLink></button>
+=======
+    
+    <!-- Main Content Section -->
+    <div class="flex justify-between bg-orange-200 py-10">
+
+      <!-- Best Sellers Section -->
+      <div class="best-sellers flex flex-col items-center justify-center gap-10">
+        <div class="text-2xl">Best Sellers</div>
+        <div class="grid grid-cols-2 gap-4">
+          <div v-for="prod in bestSellers" :key="prod.id" class="product">
+            <img :src="prod.url" class="h-48 w-48 object-cover rounded-md" alt="Product Image">
+            <div class="text-center">{{ prod.ProductName }}</div>
+            <div class="text-gray-500">{{ prod.Description }}</div>
+            <div class="text-red-500 font-bold">${{ prod.Price }}</div>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-md"><NuxtLink :to="`/products/${prod.ProductID}`">Buy now</NuxtLink></button>
+            </div>
+        </div>
+      </div>
+     
+      
+      <!-- Featured Items Section -->
+      <div class="featured flex flex-col items-center justify-center gap-10">
+        <div class="text-2xl">Featured Items</div>
+        <div class="border-2 border-red-500 w-48 h-48"></div>
+>>>>>>> f8bbf08da4efa46399a7fc29b0c32526c2a246e3
       </div>
     </div>
   </div>
@@ -76,6 +102,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { createClient } from '@supabase/supabase-js';
+<<<<<<< HEAD
 import { defineProps, defineEmits } from 'vue';
 
 defineProps({
@@ -83,6 +110,12 @@ defineProps({
   addToCart: Function,
 });
 const emits = defineEmits(['add-to-cart']);
+=======
+import navbar from './navbar.vue'
+import menu from './swiper.vue'
+import categories from './categories.vue';
+
+>>>>>>> f8bbf08da4efa46399a7fc29b0c32526c2a246e3
 
 
 const supabase = createClient('https://ezjpjdoqzdjqcpgyltbo.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6anBqZG9xemRqcWNwZ3lsdGJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTI5MjQyNDYsImV4cCI6MjAyODUwMDI0Nn0.uvgCZLt0Ok_XUVI7od0M17kcpP2DZQ5H08THYUk0Jc4');
@@ -143,10 +176,15 @@ async function fetchData() {
 
 onMounted(() => {
   fetchData();
-});
+})
+       
+       
+
 </script>
 
+
 <style>
+
 .screen {
   height: 600px;
 }

@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <navbar></navbar>
   
       <!-- Introduction Section -->
@@ -168,3 +169,18 @@
     color: #555;
   }
   </style>
+=======
+  <div>
+    <navbar></navbar>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam voluptates inventore reiciendis, ut voluptatem nihil earum obcaecati similique repellat nulla excepturi tempora labore cupiditate, magnam necessitatibus distinctio eaque exercitationem itaque.</p>
+  </div>
+</template>
+
+<script setup>
+
+</script>
+
+<style coped>
+
+</style>
+>>>>>>> f8bbf08da4efa46399a7fc29b0c32526c2a246e3
